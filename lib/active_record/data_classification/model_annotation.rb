@@ -24,6 +24,13 @@ module ActiveRecord
 
       included do
         class_attribute :_data_security_type
+        if defined?(::DeclareSchema)
+          require_relative 'declare_schema/extension'
+
+          unless ::DeclareSchema::Model::FieldSpec < DeclareSchema::Extension
+            ::DeclareSchema::Model::FieldSpec.prepend(DeclareSchema::Extension)
+          end
+        end
       end
     end
   end
