@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    activerecord-data_classification (0.1.0.pre.1)
+    activerecord-data_classification (0.1.0)
       activemodel (>= 6.0)
       activerecord (>= 6.0)
       activesupport (>= 6.0)
