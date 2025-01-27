@@ -20,6 +20,8 @@ metadata:
   tags:
   - ruby
   - gem
+  - public
+  - rails-dependent
   annotations:
     buildkite.com/project-slug: invoca/activerecord-data_classification
     github.com/project-slug: invoca/activerecord-data_classification
