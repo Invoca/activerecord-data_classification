@@ -6,6 +6,8 @@ source "https://rubygems.org"
 gemspec
 
 gem "appraisal"
+gem "appraisal-matrix"
+gem "csv"
 gem "rake"
 gem 'rspec'
 gem 'rspec_junit_formatter'
