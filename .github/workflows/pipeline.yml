@@ -7,9 +7,11 @@ jobs:
   tests:
     uses: Invoca/ruby-test-matrix-workflow/.github/workflows/ruby-test-matrix.yml@main
   coveralls:
-    - name: Coveralls
-      if: ${{ env.BUNDLE_GEMFILE == 'Gemfile' }}
-      steps:
+    name: Coveralls
+    runs-on: ubuntu-latest
+    steps:
+      - name: Coveralls
+        if: ${{ env.BUNDLE_GEMFILE == 'Gemfile' }}
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.github_token }}
