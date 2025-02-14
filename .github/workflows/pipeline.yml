@@ -9,9 +9,14 @@ jobs:
   coveralls:
     name: Coveralls
     runs-on: ubuntu-latest
+    needs: tests
+    strategy:
+      fail-fast: false
+      matrix:
+        gemfile: ${{ fromJson(needs.tests.outputs.gemfiles) }}
+    if: ${{ matrix.gemfile == 'Gemfile' }}
     steps:
-      - name: Coveralls
-        if: ${{ env.BUNDLE_GEMFILE == 'Gemfile' }}
+      - name: Run Coveralls
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.github_token }}
