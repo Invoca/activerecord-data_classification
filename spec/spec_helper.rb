@@ -1,23 +1,9 @@
 # frozen_string_literal: true
 
+require_relative "simplecov_helper"
+
 require 'rspec_junit_formatter'
 require "active_record/data_classification"
-
-if ENV['GITHUB_ACTIONS'].presence
-  require 'simplecov'
-  require 'simplecov-lcov'
-
-  SimpleCov.start do
-    SimpleCov::Formatter::LcovFormatter.config do |c|
-      c.report_with_single_file = true
-      c.single_report_path = 'coverage/lcov.info'
-    end
-
-    formatter SimpleCov::Formatter::LcovFormatter
-
-    add_filter %w[version.rb initializer.rb]
-  end
-end
 
 RSpec.configure do |config|
   config.add_formatter RspecJunitFormatter, ENV['JUNIT_OUTPUT'].presence || 'spec/reports/rspec.xml'
